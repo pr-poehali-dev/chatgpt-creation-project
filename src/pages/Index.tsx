@@ -42,7 +42,7 @@ const Index = () => {
     setInput("");
     setIsSending(true);
     
-    // Имитация ответа ассистента
+    // Имитация ответа ассистента (уменьшил время до 300мс)
     setTimeout(() => {
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -53,7 +53,7 @@ const Index = () => {
       
       setMessages((prev) => [...prev, assistantMessage]);
       setIsSending(false);
-    }, 1000);
+    }, 300); // Уменьшил время ожидания с 1000мс до 300мс
   };
 
   const generateResponse = (input: string): string => {
@@ -126,9 +126,9 @@ const Index = () => {
             )}
             {isSending && (
               <div className="flex items-center space-x-2 text-gray-400 animate-pulse mt-4">
-                <div className="h-2 w-2 rounded-full bg-current" />
-                <div className="h-2 w-2 rounded-full bg-current" />
-                <div className="h-2 w-2 rounded-full bg-current" />
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce" />
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce" style={{ animationDelay: "0.2s" }} />
+                <div className="h-2 w-2 rounded-full bg-current animate-bounce" style={{ animationDelay: "0.4s" }} />
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -144,6 +144,7 @@ const Index = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              autoFocus
             />
             <Button 
               size="icon"
