@@ -31,11 +31,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full text-white">
       <div className="p-4">
         <Button 
           variant="outline" 
-          className="w-full justify-start"
+          className="w-full justify-start border-[#1E1E25] bg-transparent text-white hover:bg-[#1E1E25] hover:text-white"
           onClick={startNewChat}
         >
           <Plus className="mr-2 h-4 w-4" />
@@ -43,7 +43,7 @@ const Sidebar = () => {
         </Button>
       </div>
       
-      <Separator />
+      <Separator className="bg-[#1E1E25]" />
       
       <div className="flex-1 overflow-hidden">
         <ScrollArea className="h-full">
@@ -52,12 +52,12 @@ const Sidebar = () => {
               <Button
                 key={chat.id}
                 variant="ghost"
-                className="w-full justify-start text-left font-normal"
+                className="w-full justify-start text-left font-normal text-gray-300 hover:bg-[#1E1E25] hover:text-white"
               >
                 <MessageSquare className="mr-2 h-4 w-4" />
                 <div className="flex flex-col items-start">
                   <span className="line-clamp-1">{chat.title}</span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-gray-500">
                     {formatDate(chat.date)}
                   </span>
                 </div>
@@ -68,11 +68,11 @@ const Sidebar = () => {
       </div>
       
       <div className="p-4 mt-auto space-y-2">
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground">
+        <Button variant="ghost" className="w-full justify-start text-gray-400 hover:bg-[#1E1E25] hover:text-white">
           <Trash2 className="mr-2 h-4 w-4" />
           Очистить историю
         </Button>
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground">
+        <Button variant="ghost" className="w-full justify-start text-gray-400 hover:bg-[#1E1E25] hover:text-white">
           <Settings className="mr-2 h-4 w-4" />
           Настройки
         </Button>

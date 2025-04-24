@@ -70,9 +70,9 @@ const Index = () => {
   };
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-[#050509]">
       {/* Боковая панель (десктоп) */}
-      <div className="hidden md:block w-64 border-r border-border">
+      <div className="hidden md:block w-64 border-r border-[#1E1E25]">
         <Sidebar />
       </div>
       
@@ -83,7 +83,7 @@ const Index = () => {
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
             onClick={() => setIsMobileSidebarOpen(false)}
           />
-          <div className="absolute left-0 top-0 h-full w-3/4 max-w-xs border-r border-border bg-background p-4">
+          <div className="absolute left-0 top-0 h-full w-3/4 max-w-xs border-r border-[#1E1E25] bg-[#050509] p-4">
             <Sidebar />
           </div>
         </div>
@@ -92,7 +92,7 @@ const Index = () => {
       {/* Основная часть */}
       <div className="flex flex-col flex-1">
         {/* Хедер мобильной версии */}
-        <div className="md:hidden flex items-center justify-between p-4 border-b border-border">
+        <div className="md:hidden flex items-center justify-between p-4 border-b border-[#1E1E25]">
           <Button 
             variant="ghost" 
             size="icon"
@@ -100,22 +100,22 @@ const Index = () => {
           >
             <ChevronDown className="h-5 w-5" />
           </Button>
-          <h1 className="text-lg font-medium">ChatGPT</h1>
+          <h1 className="text-lg font-medium text-white">OpenAI</h1>
           <Button variant="ghost" size="icon">
             <Plus className="h-5 w-5" />
           </Button>
         </div>
         
         {/* Область сообщений */}
-        <ScrollArea className="flex-1 p-4">
+        <ScrollArea className="flex-1 p-4 text-white">
           <div className="max-w-2xl mx-auto">
             {messages.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-8 space-y-4">
-                <div className="rounded-full bg-primary/10 p-3">
-                  <Settings className="h-6 w-6 text-primary" />
+                <div className="rounded-full bg-[#10a37f]/10 p-3">
+                  <Settings className="h-6 w-6 text-[#10a37f]" />
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight">ChatGPT</h2>
-                <p className="text-muted-foreground">
+                <h2 className="text-2xl font-bold tracking-tight">OpenAI Помощник</h2>
+                <p className="text-gray-400">
                   Задайте мне вопрос, и я постараюсь вам помочь.
                 </p>
               </div>
@@ -125,7 +125,7 @@ const Index = () => {
               ))
             )}
             {isSending && (
-              <div className="flex items-center space-x-2 text-muted-foreground animate-pulse mt-4">
+              <div className="flex items-center space-x-2 text-gray-400 animate-pulse mt-4">
                 <div className="h-2 w-2 rounded-full bg-current" />
                 <div className="h-2 w-2 rounded-full bg-current" />
                 <div className="h-2 w-2 rounded-full bg-current" />
@@ -136,10 +136,10 @@ const Index = () => {
         </ScrollArea>
         
         {/* Область ввода */}
-        <div className="border-t border-border p-4">
+        <div className="border-t border-[#1E1E25] p-4">
           <div className="max-w-2xl mx-auto flex space-x-2">
             <Input
-              className="flex-1"
+              className="flex-1 bg-[#1E1E25] border-none text-white"
               placeholder="Напишите сообщение..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -149,12 +149,13 @@ const Index = () => {
               size="icon"
               disabled={!input.trim()}
               onClick={handleSendMessage}
+              className="bg-[#10a37f] hover:bg-[#0e8f6e] text-white"
             >
               <SendHorizontal className="h-5 w-5" />
             </Button>
           </div>
-          <div className="max-w-2xl mx-auto mt-2 text-xs text-center text-muted-foreground">
-            ChatGPT может допускать ошибки. Проверяйте важную информацию.
+          <div className="max-w-2xl mx-auto mt-2 text-xs text-center text-gray-400">
+            OpenAI может допускать ошибки. Проверяйте важную информацию.
           </div>
         </div>
       </div>
